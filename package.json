@@ -1,0 +1,19 @@
+{
+  "name": "sistema-inventario-back",
+  "version": "1.0.0",
+  "description": "Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javicaz/sistema-inventario-back.git"
+  },
+  "author": "Javi, Oscar, Diego",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javicaz/sistema-inventario-back/issues"
+  },
+  "homepage": "https://github.com/javicaz/sistema-inventario-back#readme"
+}
