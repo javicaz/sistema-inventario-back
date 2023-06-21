@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/javicaz/sistema-inventario-back/issues"
   },
-  "homepage": "https://github.com/javicaz/sistema-inventario-back#readme"
+  "homepage": "https://github.com/javicaz/sistema-inventario-back#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
