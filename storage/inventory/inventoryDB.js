@@ -7,7 +7,8 @@ const inventoryDB = new sqlite3.Database(DATASOURCE, (err) => {
         console.log(err.message);
         throw err;
     } else {
-        console.log("[ CONEXIÓN ESTABLECIDA ] -> INVENTORY")
+        console.log(`\n\x1b[46m\x1b[30m INFO \x1b[0m\x1b[1m Connected to database Inventory\x1b[0m`);
+
         inventoryDB.run("CREATE TABLE inventory (\
             productId INTEGER PRIMARY KEY AUTOINCREMENT, \
             productName TEXT, \
@@ -18,7 +19,7 @@ const inventoryDB = new sqlite3.Database(DATASOURCE, (err) => {
             totalPrice REAL);\
             ", (err) => {
             if (err) {
-                console.log("La tabla ya existe");
+                console.log("\n\x1b[33mLa tabla Inventory ya existe");
             } else {
                 var insert = "INSERT INTO inventory (productName, userRegistered, expiryDay, quanty, priceUnit) VALUES(?,?,?,?,?)";
                 inventoryDB.run(insert, ["Aceite", "Diego A. Valdez", "2023-06-21 9:55:12", 10, 5.7])

@@ -7,10 +7,11 @@ const DATASOURCE = path.resolve(__dirname, "users.sqlite");
 const userDB = new sqlite3.Database(DATASOURCE, (err) => {
     if (err) {
         // No puede abrirse la DB
-        console.log(err.message);
+        console.log(`\x1b[41m${err.message}`);
         throw err;
     } else {
-        console.log("[ CONEXIÓN ESTABLECIDA ] -> USERS ")
+        console.log(`\n\x1b[46m\x1b[30m INFO \x1b[0m\x1b[1m Connected to database Users\x1b[0m`);
+
         userDB.run("CREATE TABLE users ( \
             id INTEGER PRIMARY KEY AUTOINCREMENT,\
             firstName text NOT NULL,\
@@ -21,7 +22,7 @@ const userDB = new sqlite3.Database(DATASOURCE, (err) => {
             password text NOT NULL\
             )", (err) => {
             if (err) {
-                console.log("La tabla ya existe");
+                console.log("\n\x1b[33mLa tabla Users ya existe");
             } else {
                 var insert = "INSERT INTO users (firstName, lastName, phone, email, role, password) VALUES (?,?,?,?,?,?)";
                 userDB.run(insert, ["Diego A.", "Valdez", "9971384330", "diegovaldez123@gmail.com", "gerente", md5("diego@123")])
