@@ -37,7 +37,7 @@ router.post("/registerUser", (request, response) => {
     })
 });
 
-// ACTUALIZA INFORMACION DE UN USUARIO
+// ACTUALIZA INFORMACION DE UN USUARIO (PATCH)
 router.patch("/updateUser", (request, response) => {
     const requestBody = request.body;
 

@@ -13,20 +13,22 @@ const inventoryDB = new sqlite3.Database(DATASOURCE, (err) => {
             productId INTEGER PRIMARY KEY AUTOINCREMENT, \
             productName TEXT, \
             userRegistered TEXT, \
-            expiryDay SMALLDATETIME, \
-            quanty INTEGER, \
+            dateRegistered SMALLDATETIME, \
+            totalProduct INTEGER, \
             priceUnit REAL, \
             totalPrice REAL);\
             ", (err) => {
             if (err) {
                 console.log("\n\x1b[33mLa tabla Inventory ya existe");
             } else {
-                var insert = "INSERT INTO inventory (productName, userRegistered, expiryDay, quanty, priceUnit) VALUES(?,?,?,?,?)";
-                inventoryDB.run(insert, ["Aceite", "Diego A. Valdez", "2023-06-21 9:55:12", 10, 5.7])
+                var insert = "INSERT INTO inventory (productName, userRegistered, dateRegistered, totalProduct, priceUnit) VALUES(?,?,?,?,?)";
+                inventoryDB.run(insert, ["Aceite", "Diego A. Valdez", "2023-06-21 9:55:12", 20, 5.10])
             }
         });
     }
 });
+
+
 
 
 
