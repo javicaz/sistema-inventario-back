@@ -38,5 +38,24 @@ router.post("/addNewProduct", (request, response) => {
         })
 });
 
+// ELIMINA UN PRODUCTO DEL INVENTARIO "DELETE"
+router.delete("/deleteIndicatedProduct", (request, response) => {
+    const requestBody = request.body;
+
+    inventoryDB.run("DELETE FROM inventory (productName, userRegistered, dateRegistered, totalProduct, priceUnit) VALUES (?,?,?,?,?)",
+        [requestBody.productName, requestBody.userRegistered, requestBody.dateRegistered, requestBody.totalProduct, requestBody.priceUnit],
+        function (err, result) {
+            if (err) {
+                response.status(400).json({ "error": err.message });
+                return
+            }
+
+            response.status(201).json({
+                "message": "Producto eliminado con éxito!",
+                "id": this.lastID
+            })
+        })
+});
+
 
 module.exports = router;
