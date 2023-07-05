@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const inventoryDB = require("../storage/inventory/inventoryDB")
-
+var cors = require('cors')
 // OBTIENE LOS USUARIOS "GET"
-router.get("/getAllProducts", (request, response) => {
+router.get("/getAllProducts", cors(),(request, response) => {
     const sql = `SELECT *, totalProduct*priceUnit AS totalPrice,
     SUBSTRING(productName, 1, 2) AS SKU FROM inventory`;
 
