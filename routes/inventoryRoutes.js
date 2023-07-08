@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const inventoryDB = require("../storage/inventory/inventoryDB")
-var cors = require('cors')
+const cors = require('cors')
 // OBTIENE LOS USUARIOS "GET"
 router.get("/getAllProducts", cors(),(request, response) => {
     const sql = `SELECT *, totalProduct*priceUnit AS totalPrice,
@@ -20,7 +20,7 @@ router.get("/getAllProducts", cors(),(request, response) => {
 });
 
 // REGISTRA UN NUEVO PRODUCTO "POST"
-router.post("/addNewProduct", (request, response) => {
+router.post("/addNewProduct", cors(), (request, response) => {
     const requestBody = request.body;
 
     inventoryDB.run("INSERT INTO inventory (productName, userRegistered, dateRegistered, totalProduct, priceUnit) VALUES (?,?,?,?,?)",

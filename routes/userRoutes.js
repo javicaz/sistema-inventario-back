@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const usersDB = require("../storage/user/usersDB")
+const cors = require('cors')
 
 // OBTIENE LOS USUARIOS "GET"
-router.get("/getUsers", (request, response) => {
+router.get("/getAllUsers", cors(), (request, response) => {
     const sql = "select * from users";
 
     usersDB.all(sql, (err, rows) => {
@@ -19,7 +20,7 @@ router.get("/getUsers", (request, response) => {
 });
 
 // REGISTRA UN NUEVO USUARIO "POST"
-router.post("/registerUser", (request, response) => {
+router.post("/registerUser", cors(), (request, response) => {
     const requestBody = request.body;
 
     usersDB.run("INSERT INTO users (name, userId, password) VALUES (?,?,?)",

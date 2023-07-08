@@ -18,16 +18,17 @@ const userDB = new sqlite3.Database(DATASOURCE, (err) => {
             lastName text NOT NULL,\
             phone text NOT NULL,\
             email text NOT NULL,\
+            active bool NOT NULL,\
             role text NOT NULL,\
             password text NOT NULL\
             )", (err) => {
             if (err) {
                 console.log("\n\x1b[33mLa tabla Users ya existe");
             } else {
-                var insert = "INSERT INTO users (firstName, lastName, phone, email, role, password) VALUES (?,?,?,?,?,?)";
-                userDB.run(insert, ["Diego A.", "Valdez", "9971384330", "diegovaldez123@gmail.com", "gerente", md5("diego@123")])
-                userDB.run(insert, ["Javier.", "Icaza", "9971382133", "javierIcaza@gmail.com", "gerente", md5("javier@123")])
-                userDB.run(insert, ["Oscar", "Guerra", "9975482433", "oscarGuerra@gmail.com", "gerente", md5("diego@123")])
+                var insert = "INSERT INTO users (firstName, lastName, phone, email, active, role, password) VALUES (?,?,?,?,?,?,?)"
+                userDB.run(insert, ["Diego A.", "Valdez", "9971384330", "diegovaldez123@gmail.com", true, "gerente", md5("diego@123")])
+                userDB.run(insert, ["Javier.", "Icaza", "9971382133", "javierIcaza@gmail.com", false, "gerente", md5("javier@123")])
+                userDB.run(insert, ["Oscar", "Guerra", "9975482433", "oscarGuerra@gmail.com", true, "gerente", md5("diego@123")])
             }
         });
     }
